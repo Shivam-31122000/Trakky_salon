@@ -6,6 +6,7 @@
 
     <application
         android:label="Trakky Salon"
+        android:name=".hilt.SalonApplication"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:logo="@mipmap/ic_launcher_round"
