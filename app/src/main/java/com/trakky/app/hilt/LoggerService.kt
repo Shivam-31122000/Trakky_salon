@@ -5,7 +5,8 @@ import javax.inject.Inject
 
 class LoggerService @Inject constructor() {
 
-    fun logService(name: String){
-        Log.d("HiltData", "storeDataInDB: $name")
+    fun printLogOfStoreData(name: String){
+        Log.wtf("Shivam Hilt",name)
     }
+
 }

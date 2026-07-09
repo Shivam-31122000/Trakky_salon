@@ -1,30 +1,31 @@
 package com.trakky.app.hilt
 
-import android.util.Log
-import com.trakky.app.MainActivity
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
+import javax.inject.Named
 
 
 @InstallIn(ActivityComponent::class)
 @Module
-class UserModule @Inject constructor() {
+class UserModule {
+
+
 
     @Provides
-    @SQLQualifier
-    fun provideSQLRepository(sqlRepository: SQLRepository): UserInterface{
-        return sqlRepository
+    @RoomDatabaseNamedAnnotation
+    fun saveInfoInLocalDB(roomDBRepository: RoomDBRepository) : UserRepository{
+        return roomDBRepository
     }
+
 
     @Provides
-    @FirebaseQualifier
-    fun provideFirebaseRepository(firebaseRepository: FirebaseRepository) : UserInterface {
-        return firebaseRepository
+    @FirebaseNamedAnnotation
+    fun saveInfoInFirebaseDB(firebaseDBRepository: FirebaseDBRepository) : UserRepository{
+        return firebaseDBRepository
     }
-
 
 }
